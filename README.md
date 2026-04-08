@@ -4,7 +4,7 @@ Este documento foi criado para auxiliar qualquer pessoa que for executar o proje
 
 ---
 
-# ⚠️ Passo 1 — Configurar o appsettings.json
+# ⚠️ Passo 1 — Configurar o appsettings.json/appsettings.Development.json
 
 Antes de rodar o projeto, é obrigatório verificar a **connection string** do banco de dados.
 
@@ -24,11 +24,11 @@ Localize:
 
 Atualize conforme seu ambiente.
 
-### Exemplo (SQL Server local)
+### Exemplo (MYSQL local)
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=localhost;Database=MyExpenseControl;Trusted_Connection=True;TrustServerCertificate=True"
+  "DefaultConnection": "Server=localhost;DataBase=MyExpenseControl;Uid=root;Pwd=SENHADOBD"
 }
 ```
 
