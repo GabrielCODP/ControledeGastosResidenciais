@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.25" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\MyExpenseControl.Communication\MyExpenseControl.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\MyExpenseControl.Exceptions\MyExpenseControl.Exceptions.csproj" />
+    <ProjectReference Include="..\MyExpenseControl.Application\MyExpenseControl.Application.csproj" />
+    <ProjectReference Include="..\MyExpenseControl.Infrastructure\MyExpenseControl.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
