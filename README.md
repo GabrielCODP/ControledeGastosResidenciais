@@ -1,20 +1,117 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# 📘 Documentação
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Este documento foi criado para auxiliar qualquer pessoa que for executar o projeto pela primeira vez após clonar do GitHub.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+---
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# ⚠️ Passo 1 — Configurar o appsettings.json
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+Antes de rodar o projeto, é obrigatório verificar a **connection string** do banco de dados.
+
+Abra:
+
+```
+appsettings.json
+```
+
+Localize:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=SEU_SERVIDOR;Database=SEU_BANCO;User Id=SEU_USUARIO;Password=SUA_SENHA;"
+}
+```
+
+Atualize conforme seu ambiente.
+
+### Exemplo (SQL Server local)
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Database=MyExpenseControl;Trusted_Connection=True;TrustServerCertificate=True"
+}
+```
+
+Checklist importante:
+
+✔ Servidor correto
+✔ Nome do banco existente
+✔ Usuário com permissão
+✔ Senha correta
+✔ Porta liberada
+
+Se a connection string estiver errada, a aplicação não irá iniciar corretamente.
+
+---
+
+# 🔐 Passo 2 — Cadastro de usuário (obrigatório)
+
+Antes de utilizar  é necessário cadastrar um usuário.
+
+Fluxo obrigatório:
+
+1️⃣ Registrar usuário
+
+Endpoint:
+
+```
+POST/user
+```
+
+Exemplo:
+
+```json
+{
+  "name": "string",
+  "age": 0,
+  "email": "string",
+  "password": "string"
+}
+```
+
+---
+
+# 🔑 Passo 4 — Login
+
+Após cadastrar o usuário:
+
+Execute login:
+
+```
+POST /login
+```
+
+Exemplo:
+
+```json
+{
+  "email": "string@teste.com",
+  "password": "string"
+}
+```
+
+Resposta:
+
+```
+JWT Token
+```
+
+Esse token será usado nas próximas requisições.
+
+---
+
+# 🪪 Passo 5 — Utilizar token JWT
+
+Todos os endpoints protegidos exigem autenticação.
+
+Adicionar header:
+
+```
+Authorization: Bearer SEU_TOKEN_AQUI
+```
+
+Sem isso:
+
+```
+401 Unauthorized
+```
